@@ -23,7 +23,7 @@ const Appointment = () => {
   return docInfo && (
     <div>
         {/* ---------- Doctor Information ---------- */}
-        <div>
+        <div className=''>
 
           <div>
             <img src={docInfo?.image} alt="" />
