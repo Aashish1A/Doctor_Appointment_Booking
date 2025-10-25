@@ -15,3 +15,7 @@
 .bg-primary {
     background-color: var(--primary);
 }
+
+::-webkit-scrollbar{
+    @apply hidden;
+}
