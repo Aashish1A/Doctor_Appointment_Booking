@@ -1,10 +1,26 @@
+import doctorModel from "../models/doctorModel.js";
 
 export const changeAvailability = async(req, res) => {
   try {
+
+    const {docId} = req.body;
+
+    const doctor = await doctorModel.findById(docId);
+    await doctorModel.findByIdAndUpdate(docId, {available: !doctor.available});
     
-    res.send({success: true, message: "Availability status changed", data: doctor });
+    res.json({success: true, message: "Availability status changed"});
   } catch (error) {
     console.log(error);
-    res.send({success: false, message: error.message });
+    res.json({success: false, message: error.message });
+  }
+}
+
+export const doctorList = async(req, res) => {
+  try {
+    const doctors = await doctorModel.find({}).select(["-password","-email"]);
+    res.json({success: true, doctors});
+  } catch (error) {
+    console.log(error);
+    res.json({success: false, message: error.message });
   }
 }
