@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import {v2 as cloudinary} from 'cloudinary';
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
+// import Razorpay from "razorpay";
 
 // API for user registration
 export const registerUser = async (req, res) => {
@@ -175,3 +176,80 @@ export const bookAppointment = async (req, res) => {
 };
 
 // API to get user appointments
+export const getUserAppointments = async (req, res) => {
+
+  try {
+    const {userId} = req.body;  
+    
+    // Populate docId to get doctor's full information
+    const appointments = await appointmentModel.find({ userId })
+      .populate('docId', 'name image speciality address fees') // Populate doctor fields
+      .sort({ date: 1 }); // Sort by most recent first
+
+    res.json({ success: true, appointments });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
+
+// Note: Ensure appointmentModel has 'docId' and 'userId' as ObjectId references to respective models.
+
+// API to cancel appointment
+export const cancelAppointment = async (req, res) => {
+  try {
+    const { appointmentId } = req.body;
+    const userId = req.userId;
+
+    // Find the appointment and verify it belongs to the user
+    const appointmentData = await appointmentModel.findById(appointmentId);
+
+    if (!appointmentData) {
+      return res.status(404).json({ success: false, message: "Appointment not found" });
+    }
+
+    // Verify the appointment belongs to the requesting user
+    if (appointmentData.userId.toString() !== userId) {
+      return res.status(403).json({ success: false, message: "Unauthorized access" });
+    }
+
+    // Update the appointment to cancelled
+    await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true });
+
+    // Remove the booked slot from doctor's slots_booked
+    const { docId, slotDate, slotTime } = appointmentData;
+    const doctorData = await doctorModel.findById(docId);
+
+    if (doctorData) {
+      let slots_booked = doctorData.slots_booked || {};
+      if (slots_booked[slotDate]) {
+        slots_booked[slotDate] = slots_booked[slotDate].filter(time => time !== slotTime);
+      }
+      await doctorModel.findByIdAndUpdate(docId, { slots_booked });
+    }
+
+    res.json({ success: true, message: "Appointment cancelled successfully" });
+
+  } catch (error) {
+    console.error("Cancel appointment error:", error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
+
+// const razorpayInstance = new Razorpay({
+//   key_id: process.env.RAZORPAY_KEY_ID,
+//   key_secret: process.env.RAZORPAY_KEY_SECRET,
+// });
+
+// // API to make payment of appointment using razorpay
+// export const makePayment = async (req, res) => {
+
+//   try {
+    
+
+//   } catch (error) {
+    
+//   }
+// }
