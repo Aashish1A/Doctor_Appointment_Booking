@@ -9,6 +9,8 @@ const AdminContextProvider = ({ children }) => {
     localStorage.getItem("aToken") ? localStorage.getItem("aToken") : ""
   );
   const [doctors, setDoctors] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+  const [dashData, setDashData] = useState(false);
 
   const backendURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -26,12 +28,74 @@ const AdminContextProvider = ({ children }) => {
     }
   };
 
+  const changeDoctorAvailability = async (docId) => {
+    try {
+      const { data } = await axios.post(`${backendURL}/api/admin/change-availability`, { docId }, { headers: { atoken: aToken } });
+      if (data.success) {
+        toast.success(data.message);
+        getAllDoctors();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const getAllAppointments = async () => {
+    try {
+      const { data } = await axios.get(`${backendURL}/api/admin/appointments`, { headers: { atoken: aToken } });
+      if (data.success) {
+        setAppointments(data.appointments);
+        console.log(data.appointments)
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const cancelAppointment = async (appointmentId) => {
+    try {
+      const { data } = await axios.post(`${backendURL}/api/admin/cancel-appointment`,{ appointmentId },{ headers: { atoken: aToken } });
+      if (data.success) {
+        toast.success(data.message);
+        getAllAppointments();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const getDashboardData = async () => {
+    try {
+      const { data } = await axios.get(`${backendURL}/api/admin/dashboard`, { headers: { atoken: aToken } });
+      if (data.success) {
+        setDashData(data.dashData);
+        console.log(data.dashData)
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   const value = {
     aToken,
     setAToken,
     backendURL,
     getAllDoctors,
     doctors,
+    changeDoctorAvailability,
+    appointments, setAppointments,
+    getAllAppointments,
+    cancelAppointment,
+    dashData, setDashData,
+    getDashboardData,
   };
 
   return (
