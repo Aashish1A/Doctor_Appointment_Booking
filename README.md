@@ -1,356 +1,427 @@
-# 🏥 Doctor Appointment Booking System
+# 🏥 QuickMed - Healthcare Appointment Booking System
 
-A comprehensive full-stack web application for managing doctor appointments, built with the MERN stack. This platform connects patients with healthcare professionals, streamlining the appointment booking process with separate interfaces for patients, doctors, and administrators.
+<div align="center">
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react)
-![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?logo=node.js)
-![MongoDB](https://img.shields.io/badge/MongoDB-5.x-47A248?logo=mongodb)
+![QuickMed Logo](https://img.shields.io/badge/QuickMed-Healthcare-blue?style=for-the-badge)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+
+**Quick Medical Consultancy Made Easy**
+
+[Demo](#) • [Documentation](#installation) • [Report Bug](#) • [Request Feature](#)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [About QuickMed](#about-quickmed)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [System Architecture](#system-architecture)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [API Endpoints](#api-endpoints)
+- [Project Structure](#project-structure)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+---
+
+## 🎯 About QuickMed
+
+**QuickMed** is a comprehensive healthcare appointment booking system that streamlines the process of scheduling medical consultations. Built with the MERN stack, it provides three distinct portals for seamless interaction between patients, doctors, and administrators.
+
+### Why QuickMed?
+
+- ⚡ **Quick** - Book appointments in under 2 minutes
+- 🏥 **Medical** - Complete healthcare management
+- 💼 **Professional** - Enterprise-grade platform
+- 🔒 **Secure** - JWT-based authentication
+- 📱 **Responsive** - Works on all devices
 
 ---
 
 ## ✨ Features
 
-### 👤 Patient Portal
-- **User Authentication**: Secure registration and login system with JWT tokens
-- **Doctor Discovery**: Browse doctors by specialty (General Physician, Gynecologist, Dermatologist, etc.)
-- **Appointment Booking**: Select available time slots and book appointments
-- **Profile Management**: Update personal information and view appointment history
-- **Real-time Slot Availability**: See only available time slots based on doctor's schedule
-- **Appointment Status Tracking**: View pending, completed, and cancelled appointments
+### 👨‍⚕️ For Patients (Frontend)
 
-### 👨‍⚕️ Doctor Panel
-- **Secure Login**: Dedicated authentication for healthcare professionals
-- **Dashboard Analytics**: View earnings, total appointments, and patient count
-- **Appointment Management**: View, complete, or cancel appointments
-- **Profile Editing**: Update consultation fees, availability, and contact information
-- **Patient Information**: Access patient details for scheduled appointments
+- 🔐 **User Authentication** - Secure registration and login with JWT
+- 👨‍⚕️ **Browse Doctors** - Search and filter doctors by speciality
+- 📅 **Smart Booking** - Real-time slot availability checker
+- 💳 **Payment Integration** - Cash and online payment options
+- 📱 **My Appointments** - View, track, and cancel appointments
+- 👤 **Profile Management** - Update personal information
+- ⭐ **Doctor Details** - View doctor profiles, experience, and fees
+- 🔔 **Appointment Status** - Track completed, pending, and cancelled appointments
 
-### 👨‍💼 Admin Panel
-- **Doctor Management**: Add new doctors with complete profiles and credentials
-- **Appointment Overview**: Monitor all appointments across the platform
-- **Dashboard Statistics**: Track total doctors, appointments, and patients
-- **Doctor Availability Control**: Manage doctor availability status
-- **System Administration**: Comprehensive control over the entire platform
+### 👨‍⚕️ For Doctors (Admin Panel)
+
+- 📊 **Dashboard** - Overview of earnings, appointments, and patients
+- 📋 **Appointment Management** - View and manage patient appointments
+- ✅ **Mark Complete** - Mark consultations as completed
+- ❌ **Cancel Appointments** - Cancel appointments with slot release
+- 👤 **Profile Management** - Update fees, availability, and address
+- 📈 **Analytics** - View patient count and earnings
+- 🕐 **Latest Bookings** - Quick view of recent appointments
+
+### 👨‍💼 For Admins (Admin Panel)
+
+- ➕ **Add Doctors** - Onboard new doctors with complete details
+- 📋 **Doctor Management** - View, edit, and manage doctor profiles
+- 📊 **Dashboard** - System-wide analytics and statistics
+- 👥 **All Appointments** - Monitor all appointments across the platform
+- 🔒 **Access Control** - Secure admin authentication
+- 📈 **System Analytics** - Total doctors, patients, and appointments
+- 🎯 **Appointment Actions** - Cancel appointments from admin side
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **React.js** - UI library for building interactive user interfaces
-- **Vite** - Fast build tool and development server
-- **React Router** - Client-side routing
+### Frontend (Patient Portal)
+- **React.js** - UI library for building user interfaces
+- **React Router DOM** - Client-side routing
 - **Axios** - HTTP client for API requests
-- **React Toastify** - Elegant notifications
+- **React Toastify** - Toast notifications
 - **Tailwind CSS** - Utility-first CSS framework
+- **Vite** - Fast build tool and dev server
 
-### Backend
-- **Node.js** - JavaScript runtime environment
+### Backend (API Server)
+- **Node.js** - JavaScript runtime
 - **Express.js** - Web application framework
 - **MongoDB** - NoSQL database
 - **Mongoose** - MongoDB object modeling
-- **JWT** - Secure authentication
+- **JWT** - JSON Web Tokens for authentication
 - **Bcrypt** - Password hashing
-- **Cloudinary** - Image storage and management
+- **Cloudinary** - Image upload and management
+- **Multer** - File upload middleware
+- **Validator** - Data validation
 
 ### Admin Panel
-- **React.js** - Same tech stack as Frontend
-- **Context API** - State management
-- **Tailwind CSS** - Consistent styling
+- **React.js** - Same stack as frontend
+- **Shared Context** - For admin and doctor management
+- **Protected Routes** - Role-based access control
 
 ---
 
-## 📦 Installation
+## 🏗️ System Architecture
+
+```
+QuickMed/
+│
+├── Frontend/                 # Patient Portal
+│   ├── src/
+│   │   ├── Components/      # Reusable components
+│   │   ├── Context/         # React Context API
+│   │   ├── Pages/           # Page components
+│   │   └── assets/          # Images and static files
+│   └── package.json
+│
+├── Admin/                    # Admin & Doctor Panel
+│   ├── src/
+│   │   ├── components/      # Shared components
+│   │   ├── context/         # Context providers
+│   │   ├── pages/
+│   │   │   ├── Admin/      # Admin pages
+│   │   │   └── Doctor/     # Doctor pages
+│   │   └── assets/
+│   └── package.json
+│
+└── Backend/                  # API Server
+    ├── config/              # Configuration files
+    ├── controllers/         # Route controllers
+    ├── models/              # Database models
+    ├── routes/              # API routes
+    ├── middlewares/         # Custom middlewares
+    └── server.js            # Entry point
+```
+
+---
+
+## 🚀 Installation
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- MongoDB (v5 or higher)
-- npm or yarn package manager
+
+- Node.js (v14 or higher)
+- MongoDB
+- npm or yarn
 - Cloudinary account (for image uploads)
 
-### Clone the Repository
+### Step 1: Clone the Repository
+
 ```bash
 git clone https://github.com/Aashish1A/Doctor_Appointment_Booking.git
 cd Doctor_Appointment_Booking
 ```
 
-### Backend Setup
+### Step 2: Backend Setup
+
 ```bash
 cd Backend
 npm install
+```
 
-# Create .env file
-cat > .env << EOL
+Create `.env` file:
+
+```env
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
-ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=your_admin_password
 CLOUDINARY_NAME=your_cloudinary_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_SECRET_KEY=your_cloudinary_secret_key
-EOL
+PORT=3000
+```
 
-# Start the server
+Start backend server:
+
+```bash
 npm run server
 ```
 
-### Frontend Setup
+Backend will run on `http://localhost:3000`
+
+### Step 3: Frontend Setup
+
 ```bash
 cd ../Frontend
 npm install
+```
 
-# Create .env file
-echo "VITE_BACKEND_URL=http://localhost:3000" > .env
+Create `.env` file:
 
-# Start the development server
+```env
+VITE_BACKEND_URL=http://localhost:3000
+```
+
+Start frontend:
+
+```bash
 npm run dev
 ```
 
-### Admin Panel Setup
+Frontend will run on `http://localhost:5173`
+
+### Step 4: Admin Panel Setup
+
 ```bash
 cd ../Admin
 npm install
+```
 
-# Create .env file
-echo "VITE_BACKEND_URL=http://localhost:3000" > .env
+Create `.env` file:
 
-# Start the admin panel
+```env
+VITE_BACKEND_URL=http://localhost:3000
+```
+
+Start admin panel:
+
+```bash
 npm run dev
 ```
 
----
-
-## 🚀 Running the Application
-
-1. **Start MongoDB** (if running locally)
-   ```bash
-   mongod
-   ```
-
-2. **Start Backend Server**
-   ```bash
-   cd Backend
-   npm run server
-   ```
-   Backend will run on `http://localhost:3000`
-
-3. **Start Frontend**
-   ```bash
-   cd Frontend
-   npm run dev
-   ```
-   Frontend will run on `http://localhost:5173`
-
-4. **Start Admin Panel**
-   ```bash
-   cd Admin
-   npm run dev
-   ```
-   Admin panel will run on `http://localhost:5174`
-
----
-
-## 📁 Project Structure
-
-```
-Doctor_Appointment_Booking/
-├── Backend/
-│   ├── config/
-│   │   ├── cloudinary.js      # Cloudinary configuration
-│   │   └── mongodb.js          # MongoDB connection
-│   ├── controllers/
-│   │   ├── adminController.js  # Admin business logic
-│   │   ├── doctorController.js # Doctor business logic
-│   │   └── userController.js   # User business logic
-│   ├── middlewares/
-│   │   ├── authAdmin.js        # Admin authentication
-│   │   ├── authDoctor.js       # Doctor authentication
-│   │   ├── authUser.js         # User authentication
-│   │   └── multer.js           # File upload handling
-│   ├── models/
-│   │   ├── appointmentModel.js # Appointment schema
-│   │   ├── doctorModel.js      # Doctor schema
-│   │   └── userModel.js        # User schema
-│   ├── routes/
-│   │   ├── adminRoute.js       # Admin API routes
-│   │   ├── doctorRoute.js      # Doctor API routes
-│   │   └── userRoute.js        # User API routes
-│   ├── .env                     # Environment variables
-│   ├── server.js               # Server entry point
-│   └── package.json
-│
-├── Frontend/
-│   ├── src/
-│   │   ├── assets/             # Images and static files
-│   │   ├── Components/         # Reusable components
-│   │   ├── Context/            # React Context for state
-│   │   ├── Pages/              # Page components
-│   │   ├── App.jsx             # Main app component
-│   │   └── main.jsx            # Entry point
-│   ├── .env                     # Environment variables
-│   └── package.json
-│
-└── Admin/
-    ├── src/
-    │   ├── assets/             # Images and static files
-    │   ├── components/         # Reusable components
-    │   ├── context/            # React Context for state
-    │   ├── pages/              # Admin & Doctor pages
-    │   ├── App.jsx             # Main admin component
-    │   └── main.jsx            # Entry point
-    ├── .env                     # Environment variables
-    └── package.json
-```
+Admin panel will run on `http://localhost:5174`
 
 ---
 
 ## 🔐 Environment Variables
 
 ### Backend (.env)
-```env
-MONGODB_URI=mongodb://localhost:27017/prescripto
-JWT_SECRET=your_super_secret_jwt_key_here
-ADMIN_EMAIL=admin@prescripto.com
-ADMIN_PASSWORD=admin123
-CLOUDINARY_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_SECRET_KEY=your_cloudinary_secret_key
-```
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `MONGODB_URI` | MongoDB connection string | `mongodb+srv://user:pass@cluster.mongodb.net/quickmed` |
+| `JWT_SECRET` | Secret key for JWT tokens | `your_secret_key_min_32_chars` |
+| `CLOUDINARY_NAME` | Cloudinary cloud name | `your_cloud_name` |
+| `CLOUDINARY_API_KEY` | Cloudinary API key | `123456789012345` |
+| `CLOUDINARY_SECRET_KEY` | Cloudinary secret key | `your_secret_key` |
+| `PORT` | Server port | `3000` |
 
 ### Frontend & Admin (.env)
-```env
-VITE_BACKEND_URL=http://localhost:3000
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `VITE_BACKEND_URL` | Backend API URL | `http://localhost:3000` |
+
+---
+
+## 📡 API Endpoints
+
+### User Routes (`/api/user`)
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/register` | Register new user | ❌ |
+| POST | `/login` | User login | ❌ |
+| GET | `/profile` | Get user profile | ✅ |
+| POST | `/update-profile` | Update user profile | ✅ |
+| POST | `/book-appointment` | Book an appointment | ✅ |
+| GET | `/appointments` | Get user appointments | ✅ |
+| POST | `/cancel-appointment` | Cancel appointment | ✅ |
+
+### Doctor Routes (`/api/doctor`)
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/login` | Doctor login | ❌ |
+| GET | `/appointments` | Get doctor appointments | ✅ Doctor |
+| GET | `/dashboard` | Get dashboard data | ✅ Doctor |
+| GET | `/profile` | Get doctor profile | ✅ Doctor |
+| POST | `/update-profile` | Update doctor profile | ✅ Doctor |
+| POST | `/complete-appointment` | Mark appointment complete | ✅ Doctor |
+| POST | `/cancel-appointment` | Cancel appointment | ✅ Doctor |
+
+### Admin Routes (`/api/admin`)
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/login` | Admin login | ❌ |
+| POST | `/add-doctor` | Add new doctor | ✅ Admin |
+| GET | `/doctors` | Get all doctors | ✅ Admin |
+| POST | `/change-availability` | Toggle doctor availability | ✅ Admin |
+| GET | `/appointments` | Get all appointments | ✅ Admin |
+| POST | `/cancel-appointment` | Cancel any appointment | ✅ Admin |
+| GET | `/dashboard` | Get admin dashboard data | ✅ Admin |
+
+---
+
+## 📁 Project Structure
+
 ```
-
----
-
-## 🌐 API Endpoints
-
-### User Routes
-- `POST /api/user/register` - Register new user
-- `POST /api/user/login` - User login
-- `GET /api/user/get-profile` - Get user profile
-- `POST /api/user/update-profile` - Update user profile
-- `POST /api/user/book-appointment` - Book appointment
-- `GET /api/user/appointments` - Get user appointments
-- `POST /api/user/cancel-appointment` - Cancel appointment
-
-### Doctor Routes
-- `POST /api/doctor/login` - Doctor login
-- `GET /api/doctor/appointments` - Get doctor appointments
-- `GET /api/doctor/dashboard` - Get dashboard data
-- `GET /api/doctor/profile` - Get doctor profile
-- `POST /api/doctor/update-profile` - Update doctor profile
-- `POST /api/doctor/complete-appointment` - Mark appointment as completed
-- `POST /api/doctor/cancel-appointment` - Cancel appointment
-
-### Admin Routes
-- `POST /api/admin/add-doctor` - Add new doctor
-- `POST /api/admin/admin-login` - Admin login
-- `GET /api/admin/get-all-doctors` - Get all doctors
-- `GET /api/admin/appointments` - Get all appointments
-- `GET /api/admin/dashboard` - Get dashboard statistics
-- `POST /api/admin/cancel-appointment` - Cancel appointment
-
----
-
-## 🎨 Key Features Explained
-
-### 1. Smart Slot Management
-- Automatically filters out booked time slots
-- Shows only available slots to prevent double booking
-- Dynamic slot generation based on doctor's working hours (10 AM - 9 PM)
-- 30-minute interval slots
-
-### 2. Role-Based Access Control
-- Three distinct user roles: Patient, Doctor, Admin
-- JWT-based authentication for each role
-- Protected routes and API endpoints
-- Secure password hashing with bcrypt
-
-### 3. Real-Time Updates
-- Appointment status updates reflect immediately
-- Doctor availability changes sync across the platform
-- Dashboard statistics update in real-time
-
-### 4. Responsive Design
-- Mobile-first approach with Tailwind CSS
-- Seamless experience across all devices
-- Optimized for tablets, phones, and desktops
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👨‍💻 Author
-
-**Aashish Kumar**
-- GitHub: [@Aashish1A](https://github.com/Aashish1A)
-- Repository: [Doctor_Appointment_Booking](https://github.com/Aashish1A/Doctor_Appointment_Booking)
-
----
-
-## 🙏 Acknowledgments
-
-- Thanks to all contributors who help improve this project
-- Inspired by the need for efficient healthcare appointment management
-- Built with ❤️ using modern web technologies
+Backend/
+├── config/
+│   ├── cloudinary.js       # Cloudinary configuration
+│   └── mongodb.js          # MongoDB connection
+├── controllers/
+│   ├── adminController.js  # Admin business logic
+│   ├── doctorController.js # Doctor business logic
+│   └── userController.js   # User business logic
+├── middlewares/
+│   ├── authAdmin.js        # Admin authentication
+│   ├── authDoctor.js       # Doctor authentication
+│   ├── authUser.js         # User authentication
+│   └── multer.js           # File upload handling
+├── models/
+│   ├── appointmentModel.js # Appointment schema
+│   ├── doctorModel.js      # Doctor schema
+│   └── userModel.js        # User schema
+├── routes/
+│   ├── adminRoute.js       # Admin routes
+│   ├── doctorRoute.js      # Doctor routes
+│   └── userRoute.js        # User routes
+└── server.js               # Application entry point
+```
 
 ---
 
 ## 📸 Screenshots
 
-*Add screenshots of your application here*
-
-### Patient Dashboard
-![Patient Dashboard](./screenshots/patient-dashboard.png)
+### Patient Portal
+*[Add screenshots of patient portal]*
 
 ### Doctor Panel
-![Doctor Panel](./screenshots/doctor-panel.png)
+*[Add screenshots of doctor dashboard]*
 
 ### Admin Panel
-![Admin Panel](./screenshots/admin-panel.png)
+*[Add screenshots of admin dashboard]*
 
 ---
 
-## 🐛 Known Issues & Future Enhancements
+## 🎨 Key Features Implementation
 
-### Planned Features
-- [ ] Email notifications for appointment confirmations
-- [ ] SMS reminders for upcoming appointments
-- [ ] Payment gateway integration
+### 1. Real-Time Slot Management
+```javascript
+// Dynamic slot generation with 30-minute intervals
+// Automatically excludes booked slots
+// Shows next 7 days availability
+```
+
+### 2. Role-Based Authentication
+```javascript
+// Three separate authentication middlewares
+// JWT token verification
+// Password hashing with bcrypt
+```
+
+### 3. Image Upload System
+```javascript
+// Cloudinary integration
+// Automatic image optimization
+// Secure URL generation
+```
+
+### 4. Appointment Status Tracking
+```javascript
+// Pending, Completed, Cancelled states
+// Real-time status updates
+// Automatic slot release on cancellation
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 🔮 Future Enhancements
+
 - [ ] Video consultation feature
+- [ ] Payment gateway integration (Razorpay/Stripe)
+- [ ] SMS/Email notifications
 - [ ] Prescription management
 - [ ] Medical records storage
 - [ ] Multi-language support
-- [ ] Advanced search and filtering
-- [ ] Doctor ratings and reviews
+- [ ] Mobile app (React Native)
+- [ ] AI-based doctor recommendations
+- [ ] Patient reviews and ratings
+- [ ] Telemedicine integration
 
 ---
 
-## 📞 Support
+## 📝 License
 
-For support, email aashish@example.com or open an issue in the GitHub repository.
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 👨‍💻 Contact
+
+**Aashish Kumar**
+
+- GitHub: [@Aashish1A](https://github.com/Aashish1A)
+- Project Link: [https://github.com/Aashish1A/Doctor_Appointment_Booking](https://github.com/Aashish1A/Doctor_Appointment_Booking)
+
+---
+
+## 🙏 Acknowledgments
+
+- [MongoDB](https://www.mongodb.com/)
+- [Express.js](https://expressjs.com/)
+- [React.js](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [Cloudinary](https://cloudinary.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 ---
 
 <div align="center">
-  <strong>⭐ Star this repository if you find it helpful!</strong>
+
+### ⭐ Star this repository if you found it helpful!
+
+Made with ❤️ by Aashish Kumar
+
 </div>
