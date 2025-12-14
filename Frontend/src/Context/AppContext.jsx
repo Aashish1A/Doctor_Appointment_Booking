@@ -9,7 +9,7 @@ export const AppContext = createContext();
 const AppContextProvider = (props) => {
 
   const currency = '$';
-  const backendURL = import.meta.env.VITE_BACKEND_URL;
+  const backendURL = "https://quickmed-askv.onrender.com";
 
   const [doctors, setDoctors] = useState([]);
   const [token, setToken] = useState(
