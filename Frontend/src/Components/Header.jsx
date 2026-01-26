@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../assets/assets_frontend/assets";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../Context/AppContext";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const { token } = useContext(AppContext);
+
+  const handleBookAppointment = () => {
+    if (token) {
+      navigate("/doctors");
+      scrollTo(0, 0);
+    } else {
+      navigate("/login");
+      scrollTo(0, 0);
+    }
+  };
+
   return (
     <div className="w-full py-12 lg:py-8">
       {/* Hero Section */}
@@ -42,10 +57,13 @@ const Header = () => {
           </div>
 
           {/* Button */}
-          <a href="#speciality" className="flex items-center gap-2 bg-[#06B5D4] hover:bg-[#06B5D4]/90 text-white px-6 py-3 rounded-full w-max transition-all mb-12">
+          <button 
+            onClick={handleBookAppointment}
+            className="flex items-center gap-2 bg-[#06B5D4] hover:bg-[#06B5D4]/90 text-white px-6 py-3 rounded-full w-max transition-all mb-12 cursor-pointer"
+          >
             Book appointment 
             <img className="w-3" src={assets.arrow_icon} alt="arrow" />
-          </a>
+          </button>
         </div>
 
         {/* Right Image */}
