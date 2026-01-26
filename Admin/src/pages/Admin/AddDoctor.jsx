@@ -155,7 +155,7 @@ const AddDoctor = () => {
                 <textarea value={about} onChange={(e) => setAbout(e.target.value)} className='w-full px-4 pt-2 border rounded'  placeholder='Write about doctor...' rows={5} required></textarea>
             </div>
 
-            <button type='submit' className='bg-primary px-10 py-3 mt-4 text-white rounded-full cursor-pointer'>Add Doctor</button>
+            <button type='submit' className='bg-[#06B5D4] px-10 py-3 mt-4 text-white rounded-full cursor-pointer'>Add Doctor</button>
         </div>
     </form>
   )
