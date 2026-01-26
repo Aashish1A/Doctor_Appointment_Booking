@@ -243,30 +243,30 @@ PORT=4000
 
 ### Patient Portal
 - **Home Page**: Hero section with doctor search and specialties
-![alt text](image-6.png)
+![Home Page](.github/assets/image-6.png)
 
 - **Doctors Page**: Browse and filter doctors by specialty
-![alt text](image-7.png)
+![Doctors Page](.github/assets/image-7.png)
 
 ### Admin Dashboard
 - **Dashboard**: View platform statistics and metrics
-![alt text](image-3.png)
+![Admin Dashboard](.github/assets/image-3.png)
 
 - **Add Doctor**: Register new doctors with complete details
-![alt text](image-4.png)
+![Add Doctor](.github/assets/image-4.png)
 
 - **Appointments**: Manage all bookings across the platform
-![alt text](image-5.png)
+![Appointments Management](.github/assets/image-5.png)
 
 ### Doctor Dashboard
 - **Dashboard**: View upcoming appointments and earnings
-![alt text](image.png)
+![Doctor Dashboard](.github/assets/image.png)
 
 - **Appointments**: Manage patient appointments
-![alt text](image-1.png)
+![Doctor Appointments](.github/assets/image-1.png)
 
 - **Profile**: Update professional information and availability
-![alt text](image-2.png)
+![Doctor Profile](.github/assets/image-2.png)
 ---
 
 ## 🚀 API Endpoints
