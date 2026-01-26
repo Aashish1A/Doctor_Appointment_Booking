@@ -58,9 +58,9 @@ const MyAppointments = () => {
         <p className='pb-3 mt-12 font-medium text-zinc-700 border-b'>My Appointments</p>
         <div>
           {appointments.map((item, index) => (
-            <div key={index} className='grid grid-cols[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b'>
+            <div key={index} className='grid grid-cols[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b border-[#79D7E7]'>
               <div>
-                <img className='w-32 bg-indigo-50' src={item.docId.image} alt="image" />
+                <img className='w-32 bg-[#94DBE7]' src={item.docId.image} alt="image" />
               </div>
               <div className='flex-1 text-sm text-zinc-600'>
                 <p className='text-neutral-800 font-semibold'>{item.docId.name}</p>

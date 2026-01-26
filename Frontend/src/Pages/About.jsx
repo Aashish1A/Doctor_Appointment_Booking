@@ -11,10 +11,10 @@ const About = () => {
         <div className='my-10 flex flex-col md:flex-row gap-12'>
           <img className='w-full md:max-w-[360px]' src={assets.about_image} alt="about_image" />
           <div className='flex flex-col justify-center gap-6 md:w-2/4 text-sm text-gray-600'>
-            <p>Welcome to Prescripto, your trusted partner in managing your healthcare needs conveniently and efficiently. At Prescripto, we understand the challenges individuals face when it comes to scheduling doctor appointments and managing their health records.</p>
-            <p>Prescripto is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, Prescripto is here to support you every step of the way.</p>
+            <p>Welcome to QuickMed, your trusted healthcare companion for seamless online doctor consultations. We connect patients with qualified healthcare professionals, making quality medical care accessible anytime, anywhere.</p>
+            <p>QuickMed is committed to revolutionizing healthcare delivery through technology. We provide a secure platform where you can book appointments in under 60 seconds, consult with experienced doctors across multiple specialties, and manage your health journey with confidence.</p>
             <b className='text-gray-800'>Our Mission</b>
-            <p>Our vision at Prescripto is to create a seamless healthcare experience for every user. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.</p>
+            <p>Our mission is to make healthcare accessible and convenient for everyone. We strive to eliminate barriers between patients and healthcare providers, ensuring you receive expert medical advice and care when you need it most, from the comfort of your home.</p>
           </div>
         </div>
 
@@ -23,19 +23,19 @@ const About = () => {
         </div>
 
         <div className='flex flex-col md:flex-row mb-20'>
-          <div className='border px-10 md:px-16 py-8 flex flex-col gap-5 text-[15px] hover:bg-[rgb(95,111,255)] hover:text-white transition-all duration-300 cursor-pointer'>
-            <b>Efficiency:</b>
-            <p>Streamlined appointment scheduling that fits into your busy lifestyle.</p>
+          <div className='border border-[#c2f6ff] px-10 md:px-16 py-8 flex flex-col gap-5 text-[15px] hover:bg-[#06B5D4] hover:text-white transition-all duration-300 cursor-pointer'>
+            <b>Lightning Fast Booking:</b>
+            <p>Book appointments with top doctors in under 60 seconds. No waiting, no hassle - just instant access to quality healthcare.</p>
           </div>
 
-          <div className='border px-10 md:px-16 py-8 flex flex-col gap-5 text-[15px] hover:bg-[rgb(95,111,255)] hover:text-white transition-all duration-300 cursor-pointer'>
-            <b>Convenience:</b>
-            <p>Access to a network of trusted healthcare professionals in your area.</p>
+          <div className='border border-[#c2f6ff] px-10 md:px-16 py-8 flex flex-col gap-5 text-[15px] hover:bg-[#06B5D4] hover:text-white transition-all duration-300 cursor-pointer'>
+            <b>Verified Specialists:</b>
+            <p>Connect with 150+ certified doctors across multiple specialties. Every healthcare professional on our platform is thoroughly verified.</p>
           </div>
 
-          <div className='border px-10 md:px-16 py-8 flex flex-col gap-5 text-[15px] hover:bg-[rgb(95,111,255)] hover:text-white transition-all duration-300 cursor-pointer'>
-            <b>Personalization:</b>
-            <p>Tailored recommendations and reminders to help you stay on top of your health.</p>
+          <div className='border border-[#c2f6ff] px-10 md:px-16 py-8 flex flex-col gap-5 text-[15px] hover:bg-[#06B5D4] hover:text-white transition-all duration-300 cursor-pointer'>
+            <b>Secure & Private:</b>
+            <p>Your health data is protected with advanced encryption. Enjoy confidential consultations in a safe, HIPAA-compliant environment.</p>
           </div>
         </div>
     </div>

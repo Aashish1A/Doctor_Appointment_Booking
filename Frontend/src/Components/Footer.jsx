@@ -9,17 +9,17 @@ const Footer = () => {
             {/* Left Section */}
             <div>
               <img className='mb-5 w-40' src={assets.logo} alt="logo" />
-              <p className='w-full md:w-2/3 text-gray-600 leading-6'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero quaerat in architecto unde sunt laudantium consequatur tempora sed eveniet exercitationem.</p>
+              <p className='w-full md:w-2/3 text-gray-600 leading-6'>Your trusted healthcare companion. Book appointments with qualified doctors, get expert consultations, and manage your health records - all in one place. Experience seamless healthcare at your fingertips.</p>
             </div>
 
             {/* Center Section */}
             <div>
               <p className='text-xl font-medium mb-5'>COMPANY</p>
               <ul className='flex flex-col gap-2 text-gray-600'>
-                <li>Home</li>
-                <li>About</li>
-                <li>Services</li>
-                <li>Contact</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
               </ul>
             </div>
 
@@ -27,15 +27,15 @@ const Footer = () => {
             <div>
               <p className='text-xl font-medium mb-5'>Get in Touch</p>
               <ul className='flex flex-col gap-2 text-gray-600'>
-                <li>+91 1244645654</li>
-                <li>info@example.com</li>
+                <li>+91 9341276657</li>
+                <li>aashishkumar93412@gmail.com</li>
               </ul>
             </div>
         </div>
         {/* ----------Copyright Text ------------ */}
         <div>
           <hr />
-          <p className='py-5 text-sm text-center'>© 2025 Your Company. All rights reserved.</p>
+          <p className='py-5 text-sm text-center'>© 2025 QuickMed Company. All rights reserved.</p>
         </div>
     </div>
   )

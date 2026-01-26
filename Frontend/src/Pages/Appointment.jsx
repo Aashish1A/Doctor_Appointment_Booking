@@ -150,7 +150,7 @@ const Appointment = () => {
         <div className='flex flex-col md:flex-row gap-4'>
 
           <div>
-            <img className='bg-[rgb(95,111,255)] sm:max-w-72 rounded-lg' src={docInfo?.image} alt="" />
+            <img className='bg-[#06B5D4] sm:max-w-72 rounded-lg' src={docInfo?.image} alt="" />
           </div>
 
           <div className='flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0'>
@@ -176,7 +176,7 @@ const Appointment = () => {
           <p>Booking Slots</p>
           <div className="flex gap-3 items-center w-full overflow-x-scroll mt-4">
             {docSlots.length && docSlots.map((slots, index) => (
-              <div onClick={() => setSlotIndex(index)} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex == index ? 'bg-[rgb(95,111,255)] text-white' : 'border border-gray-200'}`} key={index}>
+              <div onClick={() => setSlotIndex(index)} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex == index ? 'bg-[#06B5D4] text-white' : 'border border-[#94DBE7]'}`} key={index}>
                 <p>{slots[0] && daysOfWeek[slots[0].datetime.getDay()]}</p>
                 <p>{slots[0] && slots[0].datetime.getDate()}</p>
               </div>
@@ -185,11 +185,11 @@ const Appointment = () => {
 
           <div className='flex items-center gap-3 w-full overflow-x-scroll mt-4'>
             {docSlots.length && docSlots[slotIndex].map((slot, idx) => (
-              <p onClick={()=> setSlotTime(slot.time)} className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${slotTime === slot.time ? 'bg-[rgb(95,111,255)] text-white' : 'border border-gray-200'}`} key={idx}>{slot.time}</p>
+              <p onClick={()=> setSlotTime(slot.time)} className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${slotTime === slot.time ? 'bg-[#06B5D4] text-white' : 'border border-[#94DBE7]'}`} key={idx}>{slot.time}</p>
             ))}
           </div>
 
-          <button onClick={bookAppointment} className='bg-[rgb(95,111,255)] text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book Appointment</button>
+          <button onClick={bookAppointment} className='bg-[#06B5D4] text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book Appointment</button>
         </div>
         
         {/* Listing related doctors */}
