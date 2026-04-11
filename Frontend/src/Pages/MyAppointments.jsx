@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect, useCallback } from 'react'
 import { AppContext } from '../Context/AppContext'
-import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useEffect } from 'react';
 
 const MyAppointments = () => {
   
@@ -21,7 +19,7 @@ const MyAppointments = () => {
     return `${day} ${months[monthIndex]}, ${year}`;
   }
 
-  const fetchAppointments = async () => {
+  const fetchAppointments = useCallback(async () => {
     try {
       const {data} = await axios.get(`${backendURL}/api/user/appointments`,{headers: {token}});
       if(data.success){
@@ -31,7 +29,7 @@ const MyAppointments = () => {
       console.log(error);
       toast.error(error.message);
     }
-  }
+  }, [backendURL, token]);
 
   const cancelAppointment = async (appointmentId) => {
     try {
@@ -51,7 +49,7 @@ const MyAppointments = () => {
 
   useEffect(() => {
     if(token) fetchAppointments();
-  }, [token])
+  }, [token, fetchAppointments])
 
   return (
     <div className=''>
@@ -84,14 +82,11 @@ const MyAppointments = () => {
                 ) : (
                   <>
                     {!item.payment && (
-                      <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-primary hover:text-white transition-all duration-300'>
+                      <button onClick={() => toast.info('Payment gateway will be added soon. Please stay tuned.')} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 hover:bg-slate-200 border transition-all duration-300'>
                         Pay Online
                       </button>
                     )}
-                    <button 
-                      onClick={() => cancelAppointment(item._id)}
-                      className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-red-600 hover:text-white transition-all duration-300'
-                    >
+                    <button onClick={() => cancelAppointment(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-red-600 hover:text-white transition-all duration-300' >
                       Cancel Appointment
                     </button>
                   </>
